@@ -13,6 +13,13 @@ DockTamer is a sleek and lightweight macOS utility that modifies the native Dock
 - **Menu Bar App:** Runs completely in the background without cluttering your Dock. It features a custom-designed, dynamically generated menu bar icon that natively blends in with macOS.
 - **Easy Toggle:** Quickly enable or disable the Click-to-Minimize functionality directly from the menu bar drop-down.
 - **Seamless Permission Handling:** Automatically requests the necessary Accessibility permissions and detects when they are granted in real-time, removing the need to restart the app.
+- **Traditional Chinese Localization:** Includes full Traditional Chinese (zh-Hant) language support for a localized user experience.
+
+## Recent Updates (2026-10-12)
+
+- Added `build_release.sh` script to automate Xcode project generation and Release configuration compilation.
+- Created `release/` directory containing the compiled `DockTamer.app` for easy distribution.
+- Added Traditional Chinese (zh-Hant) localizable strings (`Localizable.strings`) and `NSLocalizedString` integration across the app.
 
 ## Requirements
 
