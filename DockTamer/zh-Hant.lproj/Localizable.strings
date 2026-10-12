@@ -1,5 +1,10 @@
 "Menu.ToggleFeature.Disabled" = "停用點擊即最小化";
 "Menu.ToggleFeature.Enabled" = "啟用點擊即最小化";
+"Menu.LaunchAtLogin" = "開機自動啟動";
+"LoginItem.Approval.Title" = "需要批准";
+"LoginItem.Approval.Message" = "DockTamer 需要您的批准才能在開機時自動啟動。請在系統設定 > 一般 > 登入項目中批准。";
+"LoginItem.Approval.OpenSettings" = "開啟系統設定";
+"LoginItem.Approval.Cancel" = "取消";
 "Permission.Status.Granted" = "Accessibility 權限：✅ 已授予";
 "Permission.Status.Denied" = "Accessibility 權限：❌ 已拒絕";
 "Permission.Alert.Title" = "需要權限";

@@ -1,5 +1,10 @@
 "Menu.ToggleFeature.Disabled" = "Disable Click-to-Minimize";
 "Menu.ToggleFeature.Enabled" = "Enable Click-to-Minimize";
+"Menu.LaunchAtLogin" = "Launch at Login";
+"LoginItem.Approval.Title" = "Approval Required";
+"LoginItem.Approval.Message" = "DockTamer needs your approval to launch at login. Please approve it in System Settings > General > Login Items.";
+"LoginItem.Approval.OpenSettings" = "Open Settings";
+"LoginItem.Approval.Cancel" = "Cancel";
 "Permission.Status.Granted" = "Accessibility Permissions: ✅ Granted";
 "Permission.Status.Denied" = "Accessibility Permissions: ❌ Denied";
 "Permission.Alert.Title" = "Required Permissions";

@@ -1,10 +1,12 @@
 import Cocoa
+import ServiceManagement
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var statusItem: NSStatusItem!
     var menu: NSMenu!
     var toggleItem: NSMenuItem!
+    var launchAtLoginItem: NSMenuItem!
     var permissionItem: NSMenuItem!
     
     // Timer para verificar si el usuario aprobó en Preferencias del Sistema
@@ -29,6 +31,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         toggleItem = NSMenuItem(title: NSLocalizedString("Menu.ToggleFeature.Disabled", comment: ""), action: #selector(toggleFeature), keyEquivalent: "")
         menu.addItem(toggleItem)
         
+        launchAtLoginItem = NSMenuItem(title: NSLocalizedString("Menu.LaunchAtLogin", comment: ""), action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
+        launchAtLoginItem.state = isLaunchAtLogin() ? .on : .off
+        menu.addItem(launchAtLoginItem)
+        
         permissionItem = NSMenuItem(title: NSLocalizedString("Permission.Status.Evaluating", comment: ""), action: #selector(requestPermissionsManual), keyEquivalent: "")
         menu.addItem(permissionItem)
         
@@ -45,6 +51,70 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func toggleFeature() {
         DockClickMonitor.shared.isEnabled.toggle()
         toggleItem.title = DockClickMonitor.shared.isEnabled ? NSLocalizedString("Menu.ToggleFeature.Disabled", comment: "") : NSLocalizedString("Menu.ToggleFeature.Enabled", comment: "")
+    }
+    
+    @objc func toggleLaunchAtLogin() {
+        let isEnabled = launchAtLoginItem.state == .on
+        setLaunchAtLogin(!isEnabled)
+        launchAtLoginItem.state = isLaunchAtLogin() ? .on : .off
+    }
+    
+    func isLaunchAtLogin() -> Bool {
+        return SMAppService.mainApp.status == .enabled
+    }
+    
+    func setLaunchAtLogin(_ enabled: Bool) {
+        do {
+            if enabled {
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+        } catch let nsError as NSError {
+            let errorCode = nsError.code
+            
+            // SMAppService error codes:
+            // kSMErrorAlreadyRegistered = -1
+            // kSMErrorJobNotFound = -2
+            // kSMErrorRequiresApproval = -3
+            // kSMErrorNotAllowed = -4
+            
+            switch errorCode {
+            case -1: // Already registered
+                // Already registered, this is fine when enabling
+                break
+            case -2: // Job not found
+                // Not found, this is fine when disabling
+                break
+            case -3: // Requires approval
+                // Need user approval to add to login items
+                showLoginItemApprovalAlert()
+            case -4: // Not allowed
+                print("Launch at login is not allowed. Please ensure the app is signed and has a hardened runtime.")
+            default:
+                print("Failed to update launch at login setting: \(nsError.localizedDescription)")
+            }
+        } catch {
+            print("Failed to update launch at login setting: \(error)")
+        }
+    }
+    
+    private func showLoginItemApprovalAlert() {
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString("LoginItem.Approval.Title", comment: "")
+        alert.informativeText = NSLocalizedString("LoginItem.Approval.Message", comment: "")
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: NSLocalizedString("LoginItem.Approval.OpenSettings", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("LoginItem.Approval.Cancel", comment: ""))
+        
+        NSApp.activate(ignoringOtherApps: true)
+        
+        if alert.runModal() == .alertFirstButtonReturn {
+            // Open System Settings to Login Items
+            if let url = URL(string: "x-apple.systempreferences:com.apple.preference.general?LoginItems") {
+                NSWorkspace.shared.open(url)
+            }
+        }
     }
     
     func checkAndRequestAccessibilityPermissions() {

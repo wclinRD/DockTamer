@@ -48,7 +48,8 @@ echo "Found built app: $BUILT_APP"
 
 # 5. Copy the app to the release folder
 echo "Copying app to release directory..."
-cp -R "$BUILT_APP" "$RELEASE_DIR/DockTamer.app"
+mkdir -p "$RELEASE_DIR/DockTamer.app"
+cp -R "$BUILT_APP/." "$RELEASE_DIR/DockTamer.app/"
 
 echo "=== Release build completed ==="
 echo "Release app location: $RELEASE_DIR/DockTamer.app"

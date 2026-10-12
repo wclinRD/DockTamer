@@ -1,8 +1,16 @@
-# DockTamer 繁體中文本地化任務清單
+# DockTamer 任務清單
 
 ## 已完成任務
 
-- [x] 1. 創建 Localizable.strings 檔案
+- [x] 1. 添加「開機自動啟動」(Launch at Login) 功能
+  - [x] 1.1 在 AppDelegate.swift 中新增 `launchAtLoginItem` property
+  - [x] 1.2 在 setupMenuBar() 中新增選單項目，放在 toggleItem 和 permissionItem 之間
+  - [x] 1.3 新增 `isLaunchAtLogin()` 和 `setLaunchAtLogin(_ enabled: Bool)` 方法
+  - [x] 1.4 新增 `toggleLaunchAtLogin()` 選單動作方法
+  - [x] 1.5 新增英文字串 "Menu.LaunchAtLogin" = "Launch at Login"
+  - [x] 1.6 新增繁中字串 "Menu.LaunchAtLogin" = "開機自動啟動"
+
+- [x] 2. 創建 Localizable.strings 檔案
   - [x] 1.1 創建 `zh-Hant.lproj/Localizable.strings` (繁體中文)
   - [x] 1.2 創建 `en.lproj/Localizable.strings` (英文備援)
 
