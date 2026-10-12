@@ -1,0 +1,10 @@
+"Menu.ToggleFeature.Disabled" = "停用點擊即最小化";
+"Menu.ToggleFeature.Enabled" = "啟用點擊即最小化";
+"Permission.Status.Granted" = "Accessibility 權限：✅ 已授予";
+"Permission.Status.Denied" = "Accessibility 權限：❌ 已拒絕";
+"Permission.Alert.Title" = "需要權限";
+"Permission.Alert.Message" = "DockTamer 需要 Accessibility 權限來偵測您在 Dock 上的點擊，並動態最小化/還原視窗。\n\n請在系統設定中啟用此權限。";
+"Permission.Alert.OpenSettings" = "開啟系統設定";
+"Permission.Alert.Later" = "稍後";
+"Menu.Quit" = "離開";
+"Permission.Status.Evaluating" = "權限狀態：評估中...";

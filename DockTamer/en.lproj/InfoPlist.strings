@@ -1,0 +1,2 @@
+/* Localized Info.plist strings */
+"Accessibility usage description" = "DockTamer needs Accessibility permissions to detect your clicks on the Dock and minimize windows dynamically.";

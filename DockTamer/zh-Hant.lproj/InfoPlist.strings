@@ -1,0 +1,2 @@
+/* Localized Info.plist strings */
+"Accessibility usage description" = "DockTamer 需要 Accessibility 權限來偵測您在 Dock 上的點擊，並動態最小化/還原視窗。";
