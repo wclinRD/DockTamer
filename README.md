@@ -12,6 +12,7 @@ DockTamer is a sleek and lightweight macOS utility that modifies the native Dock
 - **Smart Restoration:** If an application is activated and all of its windows are currently minimized, DockTamer will automatically un-minimize and restore them for you.
 - **Menu Bar App:** Runs completely in the background without cluttering your Dock. It features a custom-designed, dynamically generated menu bar icon that natively blends in with macOS.
 - **Easy Toggle:** Quickly enable or disable the Click-to-Minimize functionality directly from the menu bar drop-down.
+- **Launch at Login:** Choose whether to automatically launch DockTamer when your Mac starts up, using the native macOS login items API.
 - **Seamless Permission Handling:** Automatically requests the necessary Accessibility permissions and detects when they are granted in real-time, removing the need to restart the app.
 - **Traditional Chinese Localization:** Includes full Traditional Chinese (zh-Hant) language support for a localized user experience.
 
@@ -20,6 +21,7 @@ DockTamer is a sleek and lightweight macOS utility that modifies the native Dock
 - Added `build_release.sh` script to automate Xcode project generation and Release configuration compilation.
 - Created `release/` directory containing the compiled `DockTamer.app` for easy distribution.
 - Added Traditional Chinese (zh-Hant) localizable strings (`Localizable.strings`) and `NSLocalizedString` integration across the app.
+- Added "Launch at Login" (開機自動啟動) option to the menubar menu, allowing users to choose whether to automatically launch DockTamer when the Mac starts up.
 
 ## Requirements
 
